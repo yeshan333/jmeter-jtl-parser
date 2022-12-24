@@ -1,0 +1,6 @@
+*.jtl
+*.json
+*.xml
+
+jtl-parser
+jtl-parser-linux
