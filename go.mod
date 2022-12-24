@@ -1,5 +1,7 @@
 module github.com/yeshan333/jmeter-jtl-parser
 
-go 1.16
+go 1.19
 
 require github.com/alexflint/go-arg v1.4.3
+
+require github.com/alexflint/go-scalar v1.1.0 // indirect
