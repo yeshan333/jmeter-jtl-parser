@@ -55,6 +55,15 @@ make
 
 - HTTP JSON: for custom test report center show test data
 
+## Parse Validating
+
+Output/Input XML is not in canonical format, in order to diff them,
+use the included `compare.sh` script:
+
+```bash
+$ ./compare.sh tests/github-etcd.jtl
+```
+
 ## Thanks
 
 - [Gilad Peleg](https://www.giladpeleg.com)
