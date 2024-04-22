@@ -1,5 +1,7 @@
 # Jmeter JTL Parser
 
+[![Go Report Card](https://goreportcard.com/badge/github.com/yeshan333/jmeter-jtl-parser)](https://goreportcard.com/report/github.com/yeshan333/jmeter-jtl-parser) | [![Go Tests](https://github.com/yeshan333/jmeter-jtl-parser/actions/workflows/testing.yaml/badge.svg)](https://github.com/yeshan333/jmeter-jtl-parser/actions/workflows/testing.yaml)
+
 > Stream decode JMeter JTL ([xml-format](https://jmeter.apache.org/usermanual/listeners.html#xmlformat2.1)) files and output them as XML, CSV, JSON, HTTP JSON.
 
 Parse JMeter [xml-format](https://jmeter.apache.org/usermanual/listeners.html#xmlformat2.1) JTL files to "anything", supporting:
