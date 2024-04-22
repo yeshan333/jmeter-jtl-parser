@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testResults version="1.2">
+  <httpSample t="1211" it="0" lt="1037" ct="606" ts="1713792159576" s="true"
+    lb="https://api.github.com/repos/etcd-io/etcd/tags?per_page=300&amp;sort=pushed" rc="200"
+    rm="OK" tn="Get etcd version from github 1-1" dt="text" by="42203" sby="165" ng="1" na="1">
+    <java.net.URL>https://api.github.com/repos/etcd-io/etcd/tags?per_page=300&amp;sort=pushed</java.net.URL>
+  </httpSample>
+
+</testResults>

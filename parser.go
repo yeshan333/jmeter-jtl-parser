@@ -24,20 +24,14 @@ const (
 
 func main() {
 	var args struct {
-		Filename      string   `arg:"positional,required"`
-		Output        string   `arg:"-o" default:"http" help:"specify the output type, valid options: csv,xml,json,http"`
-		MergedFiles   []string `arg:"-f" help:"merge jtl files"`
-		ReportApiHost string   `arg:"-h" default:"http://localhost:8080/jmeter"`
+		Filename            string   `arg:"positional,required"`
+		Output              string   `arg:"-o" default:"http" help:"specify the output type, valid options: csv,xml,json,http"`
+		MergedFiles         []string `arg:"-f" help:"merge jtl files"`
+		ReportCenterApiHost string   `arg:"-h" default:"http://localhost:8080/jmeter" help:"transfer jtl data to JSON, and post it to report center."`
 	}
 	args.Output = DefaultOutputFormat
 	arg.MustParse(&args)
 
-	// type Args struct {
-	// 	Filename string
-	// 	Output   string
-	// }
-
-	// args := &Args{Filename: "data.jtl", Output: "http"}
 	outputType := OutputType(args.Output)
 
 	data := make(chan interface{})
@@ -45,14 +39,14 @@ func main() {
 
 	if outputType == HTTP {
 		postData := output.HTTP(data)
-		postToReportApi(args.ReportApiHost, postData)
+		postToTestReportCenterApi(args.ReportCenterApiHost, postData)
 	} else {
-		outputStream := getOutputStream(outputType)
+		outputStream := GetOutputStream(outputType)
 		outputStream(data)
 	}
 }
 
-func getOutputStream(outputType OutputType) func(data <-chan interface{}) {
+func GetOutputStream(outputType OutputType) func(data <-chan interface{}) {
 	switch outputType {
 	case CSV:
 		return output.CSV
@@ -65,8 +59,8 @@ func getOutputStream(outputType OutputType) func(data <-chan interface{}) {
 	}
 }
 
-// post data to test report api
-func postToReportApi(jmeterReportHost string, postData string) {
+// post data to test report center api for rendering it.
+func postToTestReportCenterApi(jmeterReportHost string, postData string) {
 	url := jmeterReportHost
 	method := "POST"
 

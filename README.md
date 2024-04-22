@@ -1,8 +1,8 @@
 # Jmeter JTL Parser
 
-> Stream decode JMeter JTL files and output them as XML, CSV
+> Stream decode JMeter JTL ([xml-format](https://jmeter.apache.org/usermanual/listeners.html#xmlformat2.1)) files and output them as XML, CSV, JSON, HTTP JSON.
 
-Parse JMeter JTL files, supporting:
+Parse JMeter [xml-format](https://jmeter.apache.org/usermanual/listeners.html#xmlformat2.1) JTL files to "anything", supporting:
 
 - Nested samples
 - JMeter custom variables
@@ -11,13 +11,13 @@ Parse JMeter JTL files, supporting:
 - Cookies
 - More...
 
-The parser is a **stream decoder**, meaning it's safe to use for very large files
+The parser is a **stream decoder**, meaning it's safe to use for very large jtl files.
 
 ## Usage
 
 ```bash
-❯ ./jtl-parser -h
-Usage: jtl-parser [--output OUTPUT] [--mergedfiles MERGEDFILES] [--reportapihost REPORTAPIHOST] FILENAME
+❯ ./bin/jtl-parser-linux -h
+Usage: jtl-parser-linux [--output OUTPUT] [--mergedfiles MERGEDFILES] [--reportcenterapihost REPORTCENTERAPIHOST] FILENAME
 
 Positional arguments:
   FILENAME
@@ -27,17 +27,22 @@ Options:
                          specify the output type, valid options: csv,xml,json,http [default: http]
   --mergedfiles MERGEDFILES, -f MERGEDFILES
                          merge jtl files
-  --reportapihost REPORTAPIHOST, -h REPORTAPIHOST [default: http://localhost:8080/jmeter]
+  --reportcenterapihost REPORTCENTERAPIHOST, -h REPORTCENTERAPIHOST
+                         transfer jtl data to JSON, and post it to report center. [default: http://localhost:8080/jmeter]
   --help, -h             display this help and exit
 ```
 
-## Parse Validating
+## Examples
 
-Output/Input XML is not in canonical format, in order to diff them,
-use the included `compare.sh` script:
-
-```bash
-$ ./compare.sh data.jtl
+```shell
+git clone git@github.com:yeshan333/jmeter-jtl-parser.git
+cd jmeter-jtl-parser
+# compile bin file
+make
+# transfer to csv
+./bin/jtl-parser-linux --output csv tests/github-etcd.jtl
+# transfer to json
+./bin/jtl-parser-linux --output json tests/github-etcd.jtl
 ```
 
 ## Output Formats
@@ -48,7 +53,7 @@ $ ./compare.sh data.jtl
 
 - CSV
 
-- HTTP
+- HTTP JSON: for custom test report center show test data
 
 ## Thanks
 
