@@ -43,6 +43,9 @@ make
 ./bin/jtl-parser-linux --output csv tests/github-etcd.jtl
 # transfer to json
 ./bin/jtl-parser-linux --output json tests/github-etcd.jtl
+# mmerge mutiple xml-format jtl files (3 files)
+./bin/jtl-parser-linux --output csv tests/github-etcd.jtl --mergedfiles tests/github-etcd.jtl tests/github-
+etcd.jtl
 ```
 
 ## Output Formats
