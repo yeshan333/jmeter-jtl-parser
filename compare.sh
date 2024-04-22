@@ -9,7 +9,9 @@ fi
 
 xml_file="$1"
 
-parsed=$(./bin/jtl-parser-linux -o xml "$xml_file" | xmllint --c14n --pretty 1 -)
+go build -o jmeter-jtl-parser
+
+parsed=$(./jmeter-jtl-parser -o xml "$xml_file" | xmllint --c14n --pretty 1 -)
 original=$(xmllint --c14n --pretty 1 "$xml_file")
 
 # diff and ignore white space
