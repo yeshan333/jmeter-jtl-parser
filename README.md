@@ -64,6 +64,6 @@ use the included `compare.sh` script:
 $ ./compare.sh tests/github-etcd.jtl
 ```
 
-## Thanks
+## Acknowledgements
 
-- [Gilad Peleg](https://www.giladpeleg.com)
+- project modified from [Gilad Peleg - jtl-parse](https://github.com/pgilad/jtl-parse).
